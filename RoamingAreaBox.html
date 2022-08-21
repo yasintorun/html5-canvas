@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas - Learning</title>
+    <style>
+        #canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        /** @type {CanvasRenderingContext2D} */
+        var ctx = canvas.getContext('2d');
+        let x = 0, y = 0
+        const intervalId = setInterval(() => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#FF0000';
+            ctx.fillRect(x, y, 50, 50);
+            x += 10
+            if (x > canvas.width) {
+                x = 0
+                y += 50
+            }
+            if(y == 500) {
+                clearInterval(intervalId)
+            }
+        }, 1000 / 60)
+        requestAnimationFrame(() => {
+
+        })
+    </script>
+</body>
+</html>
